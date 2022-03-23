@@ -34,3 +34,4 @@
     checkString("file1.txt");    //Chuỗi hợp lệ. Chuỗi bao gồm 4 câu
     echo "</br>";
     checkString("file2.txt");    //Chuỗi không hợp lệ
+    
