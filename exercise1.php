@@ -1,10 +1,10 @@
 <?php
-    function checkValidString($s) 
+    function checkValidString($str) 
     {
         $str1 = "book";
         $str2 = "restaurant";
-        if (((strstr($s, $str1) !== false) && (strstr($s, $str2) === false)) || 
-        ((strstr($s, $str1) === false) && (strstr($s, $str2) !== false))) {
+        if (((strstr($str, $str1) !== false) && (strstr($str, $str2) === false)) || 
+        ((strstr($str, $str1) === false) && (strstr($str, $str2) !== false))) {
             return true;
         }
         return false;
@@ -23,9 +23,9 @@
     //Bai 2
     function checkString($file) 
     {
-        $s = file_get_contents($file);
-        if (checkValidString($s)) {
-            echo "Chuỗi hợp lệ. Chuỗi bao gồm ".substr_count($s,".")." câu";
+        $str = file_get_contents($file);
+        if (checkValidString($str)) {
+            echo "Chuỗi hợp lệ. Chuỗi bao gồm " . substr_count($str, ".") . " câu";
         } else {
             echo "Chuỗi không hợp lệ";
         }
