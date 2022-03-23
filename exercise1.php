@@ -1,7 +1,10 @@
 <?php
     function checkValidString($s) 
     {
-        if (((strstr($s, "book") !== false) && (strstr($s, "restaurant") === false)) || ((strstr($s, "book") === false) && (strstr($s, "restaurant") !== false))) {
+        $str1 = "book";
+        $str2 = "restaurant";
+        if (((strstr($s, $str1) !== false) && (strstr($s, $str2) === false)) || 
+        ((strstr($s, $str1) === false) && (strstr($s, $str2) !== false))) {
             return true;
         }
         return false;
