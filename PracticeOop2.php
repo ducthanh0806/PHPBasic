@@ -24,7 +24,7 @@ abstract class Country
         return $this->slogan;
 	}
 
-    public function sayHello();
+    abstract public function sayHello();
 }
 
 //Tạo interface Boss
@@ -46,7 +46,7 @@ class EnglandCountry extends Country implements Boss
     public function checkValidSlogan() 
     {
         $str = strtolower($this->slogan);
-        if (strpos($str,"england") == true || strpos($str,"english") == false){
+        if (strpos($str,"england") == true || strpos($str,"english") == false) {
             return true;
         } else {
             return false;

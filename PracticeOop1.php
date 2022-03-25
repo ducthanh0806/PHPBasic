@@ -29,42 +29,35 @@ class ExerciseString
            || (!strstr($string, $keyWord1) && strstr($string, $keyWord2))
         ) {
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
-    public function writeFile()
+    public function writeFile($string, $resultFile)
     {
-        $resultFile = fopen("result_file.txt", "w") or die("Unable to open file!");
-        if ($this->check1 == true) {
-            fwrite($resultFile, "check1 là chuỗi hợp lệ\n");
-        }  else {
-            fwrite($resultFile, "check1 là chuỗi không hợp lệ\n");
-        }
-
-        if ($this->check2 == true) {
-            fwrite($resultFile, "check2 là chuỗi hợp lệ\n");
-        }  else {
-            fwrite($resultFile, "check2 là chuỗi không hợp lệ gao gồm " 
-                   . substr_count(file_get_contents("file2.txt"),".") . " câu");
-        }
-        fclose($resultFile);
+        $result = fopen($resultFile, "w") or die("Unable to open file!");
+        fwrite($result, $string);
+        fclose($result);
     }
 }
 
 $keyWord1 = "book";
 $keyWord2 = "restaurant";
+$resultFile = "result_file.txt";
 
 $object1 = new ExerciseString();
 $data1 = $object1->readFile('file1.txt');
 $data2 = $object1->readFile('file2.txt');
+$count = substr_count($data2, ".");
 
 $object1->check1 = $object1->checkValidString($data1, $keyWord1, $keyWord2);
 var_dump($object1->getCheck1());    //bool(true);
+$line1 = 'check1 là chuỗi "' . ($object1->getCheck1() == true ? "hợp lệ" : "không hợp lệ") . '"' . PHP_EOL;
 echo "</br>";
-
 $object1->check2 = $object1->checkValidString($data2, $keyWord1, $keyWord2);
 var_dump($object1->getCheck2());    // bool(false)
+$line2 = 'check2 là chuỗi "' . ($object1->getCheck2() == true ? "hợp lệ" : "không hợp lệ") 
+          . '". Chuỗi có ' . $count . ' câu.' . PHP_EOL;
 
-$object1->writeFile();
+$string = $line1 . $line2;
+$object1->writeFile($string, $resultFile);

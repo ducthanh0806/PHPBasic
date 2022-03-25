@@ -1,2 +1,2 @@
-check1 là chuỗi hợp lệ
-check2 là chuỗi không hợp lệ gao gồm 1 câu
+check1 là chuỗi "hợp lệ"
+check2 là chuỗi "không hợp lệ". Chuỗi có 1 câu.
