@@ -32,7 +32,7 @@ abstract class Country
 //Tạo interface Boss
 interface Boss
 {
-    public function checkValidSlogan($str);
+    public function checkValidSlogan($string, $keyWord1, $keyWord2);
 }
 
 //Tạo class EnglandCountry
@@ -44,10 +44,10 @@ class EnglandCountry extends Country implements Boss
         return "Hello";
     }
     
-    public function checkValidSlogan($str)
+    public function checkValidSlogan($string, $keyWord1, $keyWord2)
     {
-        $check = strtolower($str);
-        if (strpos($check, "england") !== false || strpos($check, "english") !== false) {
+        $check = strtolower($string);
+        if (strpos($check, $keyWord1) !== false || strpos($check, $keyWord2) !== false) {
             return true;
         }
         return false;
@@ -61,10 +61,10 @@ class VietnamCountry extends Country implements Boss
     {
         return "Xin chào";
     }
-    public function checkValidSlogan($str)
+    public function checkValidSlogan($string, $keyWord1, $keyWord2)
     {
-        $check = strtolower($str);
-        if (strpos($check, "vietnam") !== false && strpos($check, "hust") !== false) {
+        $check = strtolower($string);
+        if (strpos($check, $keyWord1) !== false && strpos($check, $keyWord2) !== false) {
             return true;
         }
         return false;
@@ -82,11 +82,16 @@ echo "</br>";
 echo $vietnamCountry->sayHello();    //Xin chào
 echo "</br>";
 
-$str1 = $englandCountry->getSlogan();
-var_dump($englandCountry->checkValidSlogan($str1));    //bool(true)
+$keyWord1 = "england";
+$keyWord2 = "english";
+$string1 = $englandCountry->getSlogan();
+var_dump($englandCountry->checkValidSlogan($string1, $keyWord1, $keyWord2));    //bool(true)
 echo "<br>";
-$str2 = $vietnamCountry->getSlogan();
-var_dump($vietnamCountry->checkValidSlogan($str2));    //bool(false)
+
+$keyWord1 = "vietnam";
+$keyWord2 = "hust";
+$string2 = $vietnamCountry->getSlogan();
+var_dump($vietnamCountry->checkValidSlogan($string2, $keyWord1, $keyWord2));    //bool(false)
 echo "<br>";
 
 //In ra tên class
