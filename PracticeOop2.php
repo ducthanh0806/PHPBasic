@@ -1,25 +1,27 @@
 <?php
 //Tạo trait
-trait Active 
+trait Active
 {
-    public function defindYourSelf() 
+    public function defindYourSelf()
     {
-        return get_class();
+        return get_class($this);
     }
 }
 
 //Tạo class Country
 abstract class Country
 {
+    use Active;
+    
     protected $slogan;
     
     //Methods
-    public function setSlogan($slogan) 
+    public function setSlogan($slogan)
     {
         return $this->slogan = $slogan;
     }
     
-    public function getSlogan () 
+    public function getSlogan()
     {
         return $this->slogan;
 	}
@@ -30,46 +32,42 @@ abstract class Country
 //Tạo interface Boss
 interface Boss
 {
-    public function checkValidSlogan();
+    public function checkValidSlogan($str);
 }
 
 //Tạo class EnglandCountry
 class EnglandCountry extends Country implements Boss
 {
-    use Active;
     
     public function sayHello()
     {
         return "Hello";
     }
     
-    public function checkValidSlogan() 
+    public function checkValidSlogan($str)
     {
-        $str = strtolower($this->slogan);
-        if (strpos($str,"england") == true || strpos($str,"english") == false) {
+        $check = strtolower($str);
+        if (strpos($check, "england") !== false || strpos($check, "english") !== false) {
             return true;
-        } else {
-            return false;
-        } 
+        }
+        return false;
     }
 }
 
 //Tạo class VietnamCountry
 class VietnamCountry extends Country implements Boss 
 {
-    use Active;
     public function sayHello()
     {
         return "Xin chào";
     }
-    public function checkValidSlogan()
+    public function checkValidSlogan($str)
     {
-        $str = strtolower($this->slogan);
-        if (strpos($str, "vietnam") == true && strpos($str, "hust") == true) {
+        $check = strtolower($str);
+        if (strpos($check, "vietnam") !== false && strpos($check, "hust") !== false) {
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 }
 
@@ -84,9 +82,11 @@ echo "</br>";
 echo $vietnamCountry->sayHello();    //Xin chào
 echo "</br>";
 
-var_dump($englandCountry->checkValidSlogan());    //bool(true)
+$str1 = $englandCountry->getSlogan();
+var_dump($englandCountry->checkValidSlogan($str1));    //bool(true)
 echo "<br>";
-var_dump($vietnamCountry->checkValidSlogan());    //bool(false)
+$str2 = $vietnamCountry->getSlogan();
+var_dump($vietnamCountry->checkValidSlogan($str2));    //bool(false)
 echo "<br>";
 
 //In ra tên class

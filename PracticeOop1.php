@@ -11,7 +11,7 @@ class ExerciseString
         return $this->check1;
     }
 
-    function getCheck2 ()
+    function getCheck2()
     {
         return $this->check2;
     }
