@@ -12,7 +12,7 @@ trait Active
 abstract class Country
 {
     use Active;
-    
+
     protected $slogan;
     
     //Methods
@@ -24,7 +24,7 @@ abstract class Country
     public function getSlogan()
     {
         return $this->slogan;
-	}
+    }
 
     abstract public function sayHello();
 }
