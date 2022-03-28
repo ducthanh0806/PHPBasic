@@ -14,7 +14,8 @@
     FROM categories
     LEFT JOIN 
     (SELECT category_id, SUM(amount) as amount 
-    FROM items GROUP BY category_id) as total
+    FROM items 
+    GROUP BY category_id) as total
     ON categories.id = total.category_id;
 
 -- Câu 3:
