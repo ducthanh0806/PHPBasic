@@ -21,7 +21,7 @@ services:
         - ./docker/nginx_conf:/etc/nginx/conf.d/
       ports:
        - "8080:80"
-
+    
     db:
       platform: linux/x86_64
       image: mysql:5.7
@@ -33,3 +33,4 @@ services:
         MYSQL_PASSWORD: password
       ports:
         - 3306:3306
+        
