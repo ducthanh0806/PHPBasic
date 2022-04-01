@@ -32,8 +32,8 @@ if (isset($_POST['submit']) && empty($error)) {
     array(
         'mail' => $email,
         'password' => $password_enc
-    )
-);
+        )
+    );
     $count = $statement->rowCount();
     if ($count == 1){
         $infor = $statement->fetch();
