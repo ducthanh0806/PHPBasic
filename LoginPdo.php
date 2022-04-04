@@ -26,14 +26,8 @@ if (isset($_POST['submit']) && empty($error)) {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $password_enc = md5($password);
-    $conn = Connection::getConnect();
-    $statement = $conn->prepare("select * from users where mail=:mail and password=:password");
-    $statement->execute(
-    array(
-        'mail' => $email,
-        'password' => $password_enc
-        )
-    );
+    $query = "select * from users where mail='$email' and password='$password_enc'";
+    $statement = executeQuery($query);
     $count = $statement->rowCount();
     if ($count == 1){
         $infor = $statement->fetch();

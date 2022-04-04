@@ -48,19 +48,8 @@ if (isset($_POST['register'])) {
         $phone = $_POST['phone'];
         $email = $_POST['email'];
         $password = md5($_POST['password']);
-        $created_at = date("Y-m-d h:i:sa");
-
-        $conn = Connection::getConnect();
-        $statement = $conn->prepare("Insert into users set mail=:mail, name=:name, password=:password, phone=:phone, address=:address");
-        $statement->execute(
-            array(
-                'mail' => $email,
-                'name' => $name,
-                'password' => $password,
-                'phone' => $phone,
-                'address' => $address,
-                )
-            );
+        $query = "Insert into users set mail='$email', name='$name', password='$password', phone='$phone', address='$address'";
+        $statement = executeQuery($query);
         header("location: Login.php");
     }
 }
