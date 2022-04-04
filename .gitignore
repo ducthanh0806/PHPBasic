@@ -1,0 +1,7 @@
+.json
+.lock
+.yml
+php.Dockerfile
+docker
+vendor
+README.md
