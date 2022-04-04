@@ -1,7 +1,7 @@
-.json
-.lock
-.yml
-php.Dockerfile
+composer.json
+composer.lock
 docker
 vendor
+docker-compose.yml
+php.Dockerfile
 README.md
