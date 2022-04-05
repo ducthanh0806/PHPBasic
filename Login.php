@@ -44,7 +44,7 @@ require_once "LoginPdo.php";
                                 <div class="alert alert-danger" role="alert">
                                     <?php echo $error['password']; ?>
                                 </div>
-                                <?php endif ?>
+                            <?php endif ?>
                             <div class="form-group">
                                 <label for="" class="text-info">
                                     <span>Remember me</span>
