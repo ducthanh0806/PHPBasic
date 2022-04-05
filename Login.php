@@ -25,17 +25,20 @@ require_once "LoginPdo.php";
                         <form id="login-form" class="form" action="" method="post">
                             <h3 class="text-center text-info">Login</h3>
                             <div class="form-group">
-                                <label for="username" class="text-info">Email:</label><br>
-                                <input type="text" name="email" id="email" class="form-control" value="<?php echo isset($_COOKIE['mail']) ? $_COOKIE['mail'] : ''; ?>">
+                                <label for="username" class="text-info">Email:</label>
+                                <br>
+                                <input type="text" name="email" id="email" class="form-control"
+                                       value="<?php echo isset($_COOKIE['mail']) ? $_COOKIE['mail'] : ''; ?>">
                                 <?php if (isset($error['email'])): ?>
                                     <div class="alert alert-danger" role="alert">
                                         <?php echo $error['email']; ?>
                                     </div>
-                                    <?php endif ?>
+                                <?php endif ?>
                             </div>
                             <div class="form-group">
-                                <label for="password" class="text-info">Password:</label><br>
-                                <input type="password" name="password" id="password" class="form-control" value="<?php echo isset($_COOKIE['password']) ? $_COOKIE['password'] : ''; ?>">
+                                <label for="password" class="text-info">Password:</label>
+                                <br>
+                                <input type="password" name="password" id="password" class="form-control">
                             </div>
                             <?php if (isset($error['password'])): ?>
                                 <div class="alert alert-danger" role="alert">
@@ -43,8 +46,17 @@ require_once "LoginPdo.php";
                                 </div>
                                 <?php endif ?>
                             <div class="form-group">
-                                <label for="" class="text-info"><span>Remember me</span> <span><input id="remember" name="remember" type="checkbox" value="<?php echo isset($_COOKIE['userLogin']) ? $_COOKIE['userLogin'] : ''; ?>"></span></label><br>
-                                <input type="submit" name="submit" class="btn btn-info btn-md" value="Login">
+                                <label for="" class="text-info">
+                                    <span>Remember me</span>
+                                    <span>
+                                        <input id="remember" name="remember" type="checkbox"
+                                               value="<?php echo isset($_COOKIE['userLogin']) ? $_COOKIE['userLogin'] : ''; ?>">
+                                    </span>
+                                </label>
+                                <br>
+                                <button name="login" class="btn btn-info btn-md">
+                                    Login
+                                </button>
                             </div>
                             <div id="register-link" class="text-right">
                                 <a href="Register.php" class="text-info">Register here</a>

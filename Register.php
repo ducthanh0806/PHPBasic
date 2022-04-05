@@ -21,10 +21,11 @@ require_once "RegisterPdo.php";
         <div class="form-group ">
           <label class="col-sm-2 col-form-label">Name:</label>
           <div class="col-sm-10">
-            <input type="text"  class="form-control" id="name" name="name" placeholder="Enter your name..." value="<?php echo isset($_POST["name"]) ? htmlentities($_POST["name"]) : ''; ?>">
+            <input type="text"  class="form-control" id="name" name="name" placeholder="Enter your name..."
+                   value="<?php echo isset($_POST["name"]) ? htmlentities($_POST["name"]) : ''; ?>">
             <?php if (isset($error['name'])): ?>
                 <div class="alert alert-danger" role="alert">
-                    <?php echo $error['name']; ?>
+                  <?php echo $error['name']; ?>
                 </div>
             <?php endif ?>
           </div>
@@ -32,10 +33,11 @@ require_once "RegisterPdo.php";
         <div class="form-group ">
           <label class="col-sm-2 col-form-label">Address:</label>
           <div class="col-sm-10">
-            <input type="text"  class="form-control" id="address" name="address" placeholder="Enter your address..." value="<?php echo isset($_POST["address"]) ? htmlentities($_POST["address"]) : ''; ?>">
+            <input type="text"  class="form-control" id="address" name="address" placeholder="Enter your address..."
+                   value="<?php echo isset($_POST["address"]) ? htmlentities($_POST["address"]) : ''; ?>">
             <?php if (isset($error['address'])): ?>
                 <div class="alert alert-danger" role="alert">
-                    <?php echo $error['address']; ?>
+                  <?php echo $error['address']; ?>
                 </div>
             <?php endif ?>
           </div>
@@ -43,10 +45,11 @@ require_once "RegisterPdo.php";
         <div class="form-group ">
           <label class="col-sm-2 col-form-label">Phone Number:</label>
           <div class="col-sm-10">
-            <input type="text"  class="form-control" id="phone" name="phone" placeholder="Enter your phone number..." value="<?php echo isset($_POST["phone"]) ? htmlentities($_POST["phone"]) : ''; ?>">
+            <input type="text"  class="form-control" id="phone" name="phone" placeholder="Enter your phone number..."
+                   value="<?php echo isset($_POST["phone"]) ? htmlentities($_POST["phone"]) : ''; ?>">
             <?php if (isset($error['phone'])): ?>
                 <div class="alert alert-danger" role="alert">
-                    <?php echo $error['phone']; ?>
+                  <?php echo $error['phone']; ?>
                 </div>
             <?php endif ?>
           </div>
@@ -54,10 +57,11 @@ require_once "RegisterPdo.php";
         <div class="form-group">
           <label class="col-sm-2 col-form-label">Email:</label>
           <div class="col-sm-10">
-            <input type="text"  class="form-control" id="email" name="email" placeholder="Enter your email..." value="<?php echo isset($_POST["email"]) ? htmlentities($_POST["email"]) : ''; ?>">
+            <input type="text"  class="form-control" id="email" name="email" placeholder="Enter your email..."
+                   value="<?php echo isset($_POST["email"]) ? htmlentities($_POST["email"]) : ''; ?>">
             <?php if (isset($error['email'])): ?>
                 <div class="alert alert-danger" role="alert">
-                    <?php echo $error['email']; ?>
+                  <?php echo $error['email']; ?>
                 </div>
             <?php endif ?>
           </div>
@@ -68,7 +72,7 @@ require_once "RegisterPdo.php";
             <input type="password" class="form-control" id="password" name="password" placeholder="Enter password..." >
             <?php if (isset($error['password'])): ?>
                 <div class="alert alert-danger" role="alert">
-                    <?php echo $error['password']; ?>
+                  <?php echo $error['password']; ?>
                 </div>
             <?php endif ?>
           </div>
@@ -79,14 +83,16 @@ require_once "RegisterPdo.php";
             <input type="password" class="form-control" id="passwordCofirm" name="confirm_password" placeholder="Enter password again...">
             <?php if (isset($error['confirm_password'])): ?>
                 <div class="alert alert-danger" role="alert">
-                    <?php echo $error['confirm_password']; ?>
+                  <?php echo $error['confirm_password']; ?>
                 </div>
             <?php endif ?>
           </div>
         </div>
         <div class="control-group">
           <div class="text-center">
-            <button class="btn btn-success" style="padding: 10px 20px; margin-top: 50px;" name="register">Register</button>
+            <button class="btn btn-success" style="padding: 10px 20px; margin-top: 50px;" name="register">
+                Register
+            </button>
             <br>
             <a href='Login.php'> Login </a>
             <br>

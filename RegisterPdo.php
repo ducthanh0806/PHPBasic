@@ -5,10 +5,8 @@ if (isset($_POST['register'])) {
 
     if (empty(trim($_POST['name']))) {
         $error['name'] = 'Name không được để trống.';
-    } else {
-        if (strlen(trim($_POST['name'])) < 6 || strlen(trim($_POST['name'])) > 200) {
-            $error['name'] = 'Name không được nhỏ hơn 6 kí tự và dài hơn 255 kí tự.';
-        }
+    } elseif (strlen(trim($_POST['name'])) < 6 || strlen(trim($_POST['name'])) > 200) {
+        $error['name'] = 'Name không được nhỏ hơn 6 kí tự và dài hơn 200 kí tự.';
     }
 
     if (empty(trim($_POST['address']))) {
@@ -23,23 +21,18 @@ if (isset($_POST['register'])) {
 
     if (empty(trim($_POST['email']))) {
         $error['email'] = 'Email không được để trống.';
-    } else {
-        if (strlen(trim($_POST['email'])) > 255) {
-            $error['email'] = 'Email dài hơn 255 kí tự.';
-        } elseif (!filter_var(trim($_POST['email']), FILTER_VALIDATE_EMAIL)) {
-            $error['email'] = 'Email không hợp lệ.';
-        }
+    } elseif (strlen(trim($_POST['email'])) > 255) {
+        $error['email'] = 'Email dài hơn 255 kí tự.';
+    } elseif (!filter_var(trim($_POST['email']), FILTER_VALIDATE_EMAIL)) {
+        $error['email'] = 'Email không hợp lệ.';
     }
 
     if (empty(trim($_POST['password']))) {
         $error['password'] = 'Password không được để trống.';
-    } else {
-        if (strlen(trim($_POST['password'])) < 6 || strlen(trim($_POST['password'])) > 100) {
-            $error['password'] = 'Password không được nhỏ hơn 6 kí tự và dài hơn 255 kí tự.';
-        }
-        if (trim($_POST['password']) !== trim($_POST['confirm_password'])) {
-            $error['confirm_password'] = 'Password confirm không khớp.';
-        }
+    } elseif (strlen(trim($_POST['password'])) < 6 || strlen(trim($_POST['password'])) > 100) {
+        $error['password'] = 'Password không được nhỏ hơn 6 kí tự và dài hơn 100 kí tự.';
+    } elseif (trim($_POST['password']) !== trim($_POST['confirm_password'])) {
+        $error['confirm_password'] = 'Password confirm không khớp.';
     }
 
     if (empty($error)) {
