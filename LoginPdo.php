@@ -3,6 +3,7 @@ session_start();
 include "connect.php";
 
 if (isset($_POST['login'])) {
+    unset($_SESSION["errors"]);
     $error = array();
 
     if (empty(trim($_POST['email']))) {
@@ -42,7 +43,6 @@ if (isset($_POST['login'])) {
             }
             $_SESSION["success"] = "<script type='text/javascript'>alert('Đăng nhập thành công!');</script>";
             header("location:LoginSuccessPdo.php");
-            unset($_SESSION["errors"]);
         } else {
             $_SESSION["errors"] = "<script type='text/javascript'>alert('Đăng nhập thất bại!');</script>";
             header("location:Login.php");
