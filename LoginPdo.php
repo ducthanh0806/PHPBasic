@@ -2,7 +2,7 @@
 session_start();
 include "connect.php";
 
-if (isset($_POST['login']) && empty($error)) {
+if (isset($_POST['login'])) {
     $error = array();
 
     if (empty(trim($_POST['email']))) {
@@ -19,32 +19,33 @@ if (isset($_POST['login']) && empty($error)) {
         $error['password'] = 'Password không được nhỏ hơn 6 kí tự và dài hơn 100 kí tự.';
     }
 
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $password_enc = md5($password);
-    $query = "select * from users where mail='$email' and password='$password_enc'";
-    $statement = executeQuery($query);
-    $count = $statement->rowCount();
-    if ($count == 1) {
-        $infor = $statement->fetch();
-        $_SESSION["user"] = array(
-            'id' => $infor->id,
-            'mail' => $infor->mail
-        );
-
-        if (isset($_POST['remember'])) {
-            setcookie('mail', $email,time()+3600*24*7);
-            setcookie('password', $password, time()+3600*24*7);
-            setcookie('userLogin', $_POST['remember'], time()+3600*24*7);
+    if(empty($error)) {
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $password_enc = md5($password);
+        $query = "select * from users where mail='$email' and password='$password_enc'";
+        $statement = executeQuery($query);
+        $count = $statement->rowCount();
+        if ($count == 1) {
+            $infor = $statement->fetch();
+            $_SESSION["user"] = array(
+                'id' => $infor->id,
+                'mail' => $infor->mail
+            );
+            if (isset($_POST['remember'])) {
+                setcookie('mail', $email,time()+3600*24*7);
+                setcookie('password', $password, time()+3600*24*7);
+                setcookie('userLogin', $_POST['remember'], time()+3600*24*7);
+            } else {
+                setcookie('mail', $email, 30);
+                setcookie('password', $password, 30);
+            }
+            $_SESSION["success"] = "<script type='text/javascript'>alert('Đăng nhập thành công!');</script>";
+            header("location:LoginSuccessPdo.php");
+            unset($_SESSION["errors"]);
         } else {
-            setcookie('mail', $email, 30);
-            setcookie('password', $password, 30);
+            $_SESSION["errors"] = "<script type='text/javascript'>alert('Đăng nhập thất bại!');</script>";
+            header("location:Login.php");
         }
-        $_SESSION["success"] = "<script type='text/javascript'>alert('Đăng nhập thành công!');</script>";
-        header("location:LoginSuccessPdo.php");
-        unset($_SESSION["errors"]);
-    } else {
-        $_SESSION["errors"] = "<script type='text/javascript'>alert('Đăng nhập thất bại!');</script>";
-        header("location:Login.php");
     }
 }
