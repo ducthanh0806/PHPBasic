@@ -1,9 +1,7 @@
 <?php
-session_start();
 include "connect.php";
 
 if (isset($_POST['login'])) {
-    unset($_SESSION["errors"]);
     $error = array();
 
     if (empty(trim($_POST['email']))) {
