@@ -90,7 +90,7 @@ require_once "RegisterPdo.php";
         </div>
         <div class="control-group">
           <div class="text-center">
-            <button class="btn btn-success" style="padding: 10px 20px; margin-top: 50px;" name="register">
+            <button type="submit" class="btn btn-success" style="padding: 10px 20px; margin-top: 50px;" name="register">
                 Register
             </button>
             <br>

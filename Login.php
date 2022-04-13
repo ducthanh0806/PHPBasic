@@ -18,7 +18,6 @@ require_once "LoginPdo.php";
 <body>
     <div id="login">
         <div class="container">
-        <?php echo isset($_SESSION["errors"]) ? $_SESSION['errors'] : ""; ?>
             <div id="login-row" class="row justify-content-center align-items-center">
                 <div id="login-column" class="col-md-6">
                     <div id="login-box" class="col-md-12">
@@ -54,7 +53,7 @@ require_once "LoginPdo.php";
                                     </span>
                                 </label>
                                 <br>
-                                <button name="login" class="btn btn-info btn-md">
+                                <button type="submit" name="login" class="btn btn-info btn-md">
                                     Login
                                 </button>
                             </div>

@@ -1,7 +1,15 @@
 <?php
 require('connect.php');
 if (isset($_POST['register'])) {
+    $name = $_POST['name'];
+    $address = $_POST['address'];
+    $phone = $_POST['phone'];
+    $email = $_POST['email'];
+    $password = md5($_POST['password']);
     $error = array();
+    $query = "Select * from users where mail='$email'";
+    $statement = executeQuery($query);
+    $count = $statement->rowCount();
 
     if (empty(trim($_POST['name']))) {
         $error['name'] = 'Name không được để trống.';
@@ -16,6 +24,8 @@ if (isset($_POST['register'])) {
     if (!empty(trim($_POST['phone']))) {
         if (strlen(trim($_POST['phone'])) < 10 || strlen(trim($_POST['phone'])) > 20) {
             $error['phone'] = 'Phone không được nhỏ hơn 10 kí tự và dài hơn 20 kí tự.';
+        } elseif (!preg_match("/^[0-9]*$/", $phone)) {
+            echo "Vui lòng chỉ nhập giá trị số.";
         }
     }
 
@@ -25,6 +35,8 @@ if (isset($_POST['register'])) {
         $error['email'] = 'Email dài hơn 255 kí tự.';
     } elseif (!filter_var(trim($_POST['email']), FILTER_VALIDATE_EMAIL)) {
         $error['email'] = 'Email không hợp lệ.';
+    } elseif ($count == 1) {
+        $error['email'] = 'Email này đã tồn tại.';
     }
 
     if (empty(trim($_POST['password']))) {
@@ -36,13 +48,9 @@ if (isset($_POST['register'])) {
     }
 
     if (empty($error)) {
-        $name = $_POST['name'];
-        $address = $_POST['address'];
-        $phone = $_POST['phone'];
-        $email = $_POST['email'];
-        $password = md5($_POST['password']);
         $query = "Insert into users set mail='$email', name='$name', password='$password', phone='$phone', address='$address'";
         $statement = executeQuery($query);
-        header("location: Login.php");
+        echo "<script> alert('Đăng kí thành công !');
+              window.location.href='Login.php' </script>";
     }
 }
